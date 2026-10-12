@@ -10,33 +10,219 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AgentesRouteImport } from './routes/agentes'
+import { Route as AgentesIaRouteImport } from './routes/agentes-ia'
+import { Route as AjustesRouteImport } from './routes/ajustes'
+import { Route as AnaliticaRouteImport } from './routes/analitica'
+import { Route as BlueprintRouteImport } from './routes/blueprint'
+import { Route as ComoFuncionaRouteImport } from './routes/como-funciona'
+import { Route as ConstructorRouteImport } from './routes/constructor'
+import { Route as ControlRouteImport } from './routes/control'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as DeploymentRouteImport } from './routes/deployment'
+import { Route as KitsRouteImport } from './routes/kits'
+import { Route as MiNegocioRouteImport } from './routes/mi-negocio'
+import { Route as OnboardingRouteImport } from './routes/onboarding'
+import { Route as ProductoRouteImport } from './routes/producto'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AgentesRoute = AgentesRouteImport.update({
+  id: '/agentes',
+  path: '/agentes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AgentesIaRoute = AgentesIaRouteImport.update({
+  id: '/agentes-ia',
+  path: '/agentes-ia',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AjustesRoute = AjustesRouteImport.update({
+  id: '/ajustes',
+  path: '/ajustes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AnaliticaRoute = AnaliticaRouteImport.update({
+  id: '/analitica',
+  path: '/analitica',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlueprintRoute = BlueprintRouteImport.update({
+  id: '/blueprint',
+  path: '/blueprint',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComoFuncionaRoute = ComoFuncionaRouteImport.update({
+  id: '/como-funciona',
+  path: '/como-funciona',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConstructorRoute = ConstructorRouteImport.update({
+  id: '/constructor',
+  path: '/constructor',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ControlRoute = ControlRouteImport.update({
+  id: '/control',
+  path: '/control',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DeploymentRoute = DeploymentRouteImport.update({
+  id: '/deployment',
+  path: '/deployment',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KitsRoute = KitsRouteImport.update({
+  id: '/kits',
+  path: '/kits',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MiNegocioRoute = MiNegocioRouteImport.update({
+  id: '/mi-negocio',
+  path: '/mi-negocio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnboardingRoute = OnboardingRouteImport.update({
+  id: '/onboarding',
+  path: '/onboarding',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductoRoute = ProductoRouteImport.update({
+  id: '/producto',
+  path: '/producto',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/agentes': typeof AgentesRoute
+  '/agentes-ia': typeof AgentesIaRoute
+  '/ajustes': typeof AjustesRoute
+  '/analitica': typeof AnaliticaRoute
+  '/blueprint': typeof BlueprintRoute
+  '/como-funciona': typeof ComoFuncionaRoute
+  '/constructor': typeof ConstructorRoute
+  '/control': typeof ControlRoute
+  '/dashboard': typeof DashboardRoute
+  '/deployment': typeof DeploymentRoute
+  '/kits': typeof KitsRoute
+  '/mi-negocio': typeof MiNegocioRoute
+  '/onboarding': typeof OnboardingRoute
+  '/producto': typeof ProductoRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/agentes': typeof AgentesRoute
+  '/agentes-ia': typeof AgentesIaRoute
+  '/ajustes': typeof AjustesRoute
+  '/analitica': typeof AnaliticaRoute
+  '/blueprint': typeof BlueprintRoute
+  '/como-funciona': typeof ComoFuncionaRoute
+  '/constructor': typeof ConstructorRoute
+  '/control': typeof ControlRoute
+  '/dashboard': typeof DashboardRoute
+  '/deployment': typeof DeploymentRoute
+  '/kits': typeof KitsRoute
+  '/mi-negocio': typeof MiNegocioRoute
+  '/onboarding': typeof OnboardingRoute
+  '/producto': typeof ProductoRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/agentes': typeof AgentesRoute
+  '/agentes-ia': typeof AgentesIaRoute
+  '/ajustes': typeof AjustesRoute
+  '/analitica': typeof AnaliticaRoute
+  '/blueprint': typeof BlueprintRoute
+  '/como-funciona': typeof ComoFuncionaRoute
+  '/constructor': typeof ConstructorRoute
+  '/control': typeof ControlRoute
+  '/dashboard': typeof DashboardRoute
+  '/deployment': typeof DeploymentRoute
+  '/kits': typeof KitsRoute
+  '/mi-negocio': typeof MiNegocioRoute
+  '/onboarding': typeof OnboardingRoute
+  '/producto': typeof ProductoRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/agentes'
+    | '/agentes-ia'
+    | '/ajustes'
+    | '/analitica'
+    | '/blueprint'
+    | '/como-funciona'
+    | '/constructor'
+    | '/control'
+    | '/dashboard'
+    | '/deployment'
+    | '/kits'
+    | '/mi-negocio'
+    | '/onboarding'
+    | '/producto'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/agentes'
+    | '/agentes-ia'
+    | '/ajustes'
+    | '/analitica'
+    | '/blueprint'
+    | '/como-funciona'
+    | '/constructor'
+    | '/control'
+    | '/dashboard'
+    | '/deployment'
+    | '/kits'
+    | '/mi-negocio'
+    | '/onboarding'
+    | '/producto'
+  id:
+    | '__root__'
+    | '/'
+    | '/agentes'
+    | '/agentes-ia'
+    | '/ajustes'
+    | '/analitica'
+    | '/blueprint'
+    | '/como-funciona'
+    | '/constructor'
+    | '/control'
+    | '/dashboard'
+    | '/deployment'
+    | '/kits'
+    | '/mi-negocio'
+    | '/onboarding'
+    | '/producto'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AgentesRoute: typeof AgentesRoute
+  AgentesIaRoute: typeof AgentesIaRoute
+  AjustesRoute: typeof AjustesRoute
+  AnaliticaRoute: typeof AnaliticaRoute
+  BlueprintRoute: typeof BlueprintRoute
+  ComoFuncionaRoute: typeof ComoFuncionaRoute
+  ConstructorRoute: typeof ConstructorRoute
+  ControlRoute: typeof ControlRoute
+  DashboardRoute: typeof DashboardRoute
+  DeploymentRoute: typeof DeploymentRoute
+  KitsRoute: typeof KitsRoute
+  MiNegocioRoute: typeof MiNegocioRoute
+  OnboardingRoute: typeof OnboardingRoute
+  ProductoRoute: typeof ProductoRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +234,123 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/agentes': {
+      id: '/agentes'
+      path: '/agentes'
+      fullPath: '/agentes'
+      preLoaderRoute: typeof AgentesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/agentes-ia': {
+      id: '/agentes-ia'
+      path: '/agentes-ia'
+      fullPath: '/agentes-ia'
+      preLoaderRoute: typeof AgentesIaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ajustes': {
+      id: '/ajustes'
+      path: '/ajustes'
+      fullPath: '/ajustes'
+      preLoaderRoute: typeof AjustesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/analitica': {
+      id: '/analitica'
+      path: '/analitica'
+      fullPath: '/analitica'
+      preLoaderRoute: typeof AnaliticaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blueprint': {
+      id: '/blueprint'
+      path: '/blueprint'
+      fullPath: '/blueprint'
+      preLoaderRoute: typeof BlueprintRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/como-funciona': {
+      id: '/como-funciona'
+      path: '/como-funciona'
+      fullPath: '/como-funciona'
+      preLoaderRoute: typeof ComoFuncionaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/constructor': {
+      id: '/constructor'
+      path: '/constructor'
+      fullPath: '/constructor'
+      preLoaderRoute: typeof ConstructorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/control': {
+      id: '/control'
+      path: '/control'
+      fullPath: '/control'
+      preLoaderRoute: typeof ControlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/deployment': {
+      id: '/deployment'
+      path: '/deployment'
+      fullPath: '/deployment'
+      preLoaderRoute: typeof DeploymentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kits': {
+      id: '/kits'
+      path: '/kits'
+      fullPath: '/kits'
+      preLoaderRoute: typeof KitsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mi-negocio': {
+      id: '/mi-negocio'
+      path: '/mi-negocio'
+      fullPath: '/mi-negocio'
+      preLoaderRoute: typeof MiNegocioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/onboarding': {
+      id: '/onboarding'
+      path: '/onboarding'
+      fullPath: '/onboarding'
+      preLoaderRoute: typeof OnboardingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/producto': {
+      id: '/producto'
+      path: '/producto'
+      fullPath: '/producto'
+      preLoaderRoute: typeof ProductoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AgentesRoute: AgentesRoute,
+  AgentesIaRoute: AgentesIaRoute,
+  AjustesRoute: AjustesRoute,
+  AnaliticaRoute: AnaliticaRoute,
+  BlueprintRoute: BlueprintRoute,
+  ComoFuncionaRoute: ComoFuncionaRoute,
+  ConstructorRoute: ConstructorRoute,
+  ControlRoute: ControlRoute,
+  DashboardRoute: DashboardRoute,
+  DeploymentRoute: DeploymentRoute,
+  KitsRoute: KitsRoute,
+  MiNegocioRoute: MiNegocioRoute,
+  OnboardingRoute: OnboardingRoute,
+  ProductoRoute: ProductoRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
