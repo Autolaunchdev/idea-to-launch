@@ -1,7 +1,7 @@
 import { Link, useRouterState } from '@tanstack/react-router';
 import { LayoutDashboard, BriefcaseBusiness, Blocks, Bot, FileText, Rocket, Library, Radio, ChartNoAxesCombined, Settings, Plus, ArrowUpRight, ChevronRight, Bell, Menu, X, Sparkles } from 'lucide-react';
 import { useState, type ReactNode } from 'react';
-import { useDemo } from './store';
+import { useDemo } from '@/components/autolaunch/store';
 import { Logo, Button, Tag } from './common';
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 export const navigation = [

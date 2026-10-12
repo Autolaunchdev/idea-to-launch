@@ -3,7 +3,7 @@ import { useNavigate } from '@tanstack/react-router';
 import { ArrowLeft, ArrowRight, Check, LoaderCircle, Save } from 'lucide-react';
 import { toast } from 'sonner';
 import { Button, PublicHeader, FormField, Tag } from './common';
-import { useDemo } from './store';
+import { useDemo } from '@/components/autolaunch/store';
 import { interviewSteps, makeProject } from '@/lib/autolaunch/domain';
 export function Onboarding({interviewId}:{interviewId?:string|undefined}) {
  const {state,setState,ready}=useDemo();const target=state.projects.find(p=>p.id===interviewId);const [step,setStep]=useState(interviewId?0:state.draftStep);const [answers,setAnswers]=useState<Record<string,string>>(target?.answers??state.draft);const [busy,setBusy]=useState(false);const navigate=useNavigate();const restored=useRef(false);useEffect(()=>{if(ready&&!restored.current){restored.current=true;setAnswers(target?.answers??state.draft);setStep(interviewId?0:state.draftStep);}},[ready,target,state.draft,state.draftStep,interviewId]);const current=interviewSteps[step]??interviewSteps[0];

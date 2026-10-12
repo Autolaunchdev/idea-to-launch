@@ -2,7 +2,7 @@ import { useEffect, useState, type FormEvent } from 'react';
 import { Link } from '@tanstack/react-router';
 import { Check, X, ShieldCheck, Radio, AlertTriangle, Plus, Pencil, Trash2, Download, Save, RotateCcw } from 'lucide-react';
 import { toast } from 'sonner';
-import { useDemo } from './store';
+import { useDemo } from '@/components/autolaunch/store';
 import { Button, PageHeading, DemoNotice, SectionHeading, Tag, Metric, Empty, FormField, Progress } from './common';
 import { calculateCosts, euro, moduleNames, initialState, downloadFile, type WorkRecord } from '@/lib/autolaunch/domain';
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog';

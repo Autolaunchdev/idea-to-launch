@@ -3,7 +3,7 @@ import { Link } from '@tanstack/react-router';
 import { ArrowRight, ArrowUpRight, Check, Download, Play, Save, Sparkles, LoaderCircle, ShieldCheck, RotateCcw, Blocks, FileText, Search } from 'lucide-react';
 import { toast } from 'sonner';
 import { Button, PageHeading, DemoNotice, SectionHeading, Tag, Status, AgentIcon, Progress, FormField, CheckItem, Empty } from './common';
-import { useDemo } from './store';
+import { useDemo } from '@/components/autolaunch/store';
 import { moduleNames, agents, states, blueprintTabs, deploymentTasks, kits, canCompleteDeployment, canRunCheck, downloadFile, euro } from '@/lib/autolaunch/domain';
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 const moduleDetails=[
