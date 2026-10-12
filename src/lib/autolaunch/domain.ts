@@ -35,7 +35,7 @@ export const kits = [
  {name:'Operaciones sin fricción',category:'Procesos y automatización',description:'Un proceso de entrega claro, paso a paso.',tools:'Notion · Calendario · Email',resources:10,icon:'operations'},
  {name:'Control financiero',category:'Finanzas',description:'Presupuesto, horas y costes en una misma base.',tools:'Hojas de cálculo · Informes',resources:5,icon:'finance'},
 ];
-export function makeProject(name: string, answers: Record<string,string>, id = crypto.randomUUID()): Project {
+export function makeProject(name: string, answers: Record<string,string>, id: string = crypto.randomUUID()): Project {
  const value = (key: string) => answers[key]?.trim() || 'Pendiente de entrevista';
  return {id,name,status:'Modelo de negocio',answers,blueprint:{'Resumen ejecutivo':value('idea'),'Cliente ideal':value('client'),'Problema':value('problem'),'Propuesta de valor':value('product'),'Oferta comercial':value('essential'),'Modelo de ingresos':value('revenue'),'Competencia':value('alternative'),'Estrategia de captación':'Hipótesis: entrevistar a cinco posibles clientes antes de elegir un canal.','Plan de lanzamiento':value('goal'),'Presupuesto':value('budget'),'Riesgos y supuestos':value('evidence')},modules:moduleNames.map((_,i)=> i===0?'En planificación':'Pendiente'),checks:deploymentTasks.map(()=>false),income:0,rate:35,price:0,maintenance:0,supportHours:0,approvals:['Campaña de lanzamiento','Presupuesto del proyecto','Nueva suscripción de CRM','Modificación de la web']};
 }
