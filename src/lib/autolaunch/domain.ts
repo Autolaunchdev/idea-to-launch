@@ -10,7 +10,7 @@ export const interviewSteps = [
  { title: 'Tu objetivo', subtitle: 'Un primer paso pequeño. Una dirección clara.', fields: [['goal','¿Qué quieres conseguir en los próximos 30 días?'],['essential','¿Qué es imprescindible para lanzar?'],['later','¿Qué no necesitas todavía?']] },
 ];
 export type Project = { id: string; name: string; status: string; answers: Record<string,string>; blueprint: Record<string,string>; modules: string[]; checks: boolean[]; income: number; rate: number; price: number; maintenance: number; supportHours: number; approvals: string[] };
-export type WorkRecord = { id: string; project: string; date: string; phase: string; task: string; hours: number; tool: string; cash: number; result: string; reusable: boolean };
+export type WorkRecord = { module?: string; id: string; project: string; date: string; phase: string; task: string; hours: number; tool: string; cash: number; result: string; reusable: boolean };
 export type DemoState = { projects: Project[]; active: string; records: WorkRecord[]; draft: Record<string,string>; draftStep: number; activities: { text: string; simulated: boolean; time: string; project: string }[]; agentRuns: Record<string,string>; sharedCosts: number };
 export const agents = [
  { name: 'Business Architect', specialty: 'Estrategia', objective: 'Estructurar tu modelo de negocio y su plan de ejecución.', task: 'Preparar el mapa de hipótesis', icon: 'strategy', autonomy: 'Supervisada' },
@@ -42,16 +42,17 @@ export function makeProject(name: string, answers: Record<string,string>, id: st
 export const orto: Project = {...makeProject('Ortoholistic',{},'ortoholistic'),status:'Descubrimiento',blueprint:Object.fromEntries(blueprintTabs.map(t=>[t,'Pendiente de entrevista con la fundadora.']))};
 export const studio: Project = {...makeProject('Estudio Norte',{idea:'Un estudio de diseño de marca para pequeños negocios.',product:'Servicios de identidad visual y diseño web.',client:'Emprendedores y pequeños negocios en España.',problem:'Una marca poco coherente y una presencia digital fragmentada.',revenue:'Paquetes de servicios con un precio cerrado.',budget:'1.500 €',goal:'Validar una oferta y preparar una primera web.',essential:'Una oferta, una web y un formulario de contacto.',evidence:'Hipótesis pendiente de entrevistas.'},'estudio-norte'),status:'En construcción',modules:['Operativo','En construcción','En planificación','Pendiente','Pendiente','En planificación','Pendiente','En planificación','Pendiente'],price:1500,income:750};
 export const initialState: DemoState = {projects:[studio,orto],active:'estudio-norte',draft:{},draftStep:0,records:[
- {id:'r1',project:'estudio-norte',date:'2026-10-10',phase:'Preparación',task:'Definir el modelo de negocio',hours:3,tool:'Notion',cash:0,result:'Modelo inicial preparado',reusable:true},
- {id:'r2',project:'estudio-norte',date:'2026-10-11',phase:'Construcción',task:'Diseñar la identidad y la web',hours:6,tool:'Figma',cash:25,result:'Primera propuesta de diseño',reusable:true},
- {id:'r3',project:'estudio-norte',date:'2026-10-12',phase:'Integraciones',task:'Preparar el flujo de captación',hours:2.5,tool:'CRM',cash:20,result:'Flujo pendiente de revisión',reusable:false},
+ {id:'r1',module:'Estrategia y modelo de negocio',project:'estudio-norte',date:'2026-10-10',phase:'Preparación',task:'Definir el modelo de negocio',hours:3,tool:'Notion',cash:0,result:'Modelo inicial preparado',reusable:true},
+ {id:'r2',module:'Marca y web',project:'estudio-norte',date:'2026-10-11',phase:'Construcción',task:'Diseñar la identidad y la web',hours:6,tool:'Figma',cash:25,result:'Primera propuesta de diseño',reusable:true},
+ {id:'r3',module:'Captación de clientes',project:'estudio-norte',date:'2026-10-12',phase:'Integraciones',task:'Preparar el flujo de captación',hours:2.5,tool:'CRM',cash:20,result:'Flujo pendiente de revisión',reusable:false},
 ],activities:[{text:'Blueprint actualizado',simulated:true,time:'Hace 15 min',project:'estudio-norte'},{text:'Identidad visual en construcción',simulated:true,time:'Hace 1 hora',project:'estudio-norte'},{text:'Flujo de captación preparado',simulated:true,time:'Hace 2 horas',project:'estudio-norte'}],agentRuns:{},sharedCosts:59};
 export function calculateCosts(records: WorkRecord[], project: Project) {
  const rows=records.filter(r=>r.project===project.id);
  const hours=rows.reduce((n,r)=>n+r.hours,0);
  const cash=rows.reduce((n,r)=>n+r.cash,0);
- const labor=hours*project.rate;
- return {hours,cash,labor,economic:cash+labor,margin:project.income-cash-labor,reusable:rows.filter(r=>r.reusable).length};
+ const round=(n:number)=>Math.round((n+Number.EPSILON)*100)/100;
+ const labor=round(hours*project.rate);
+ return {hours,cash:round(cash),labor,economic:round(cash+labor),margin:round(project.income-cash-labor),reusable:rows.filter(r=>r.reusable).length};
 }
 export function canCompleteDeployment(checks: boolean[]) {return checks.length === deploymentTasks.length && checks.every(Boolean);}
 export function canRunCheck(checks: boolean[], index: number) {return index===0 || checks.slice(0,index).every(Boolean);}

@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from 'react';
+import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { useNavigate } from '@tanstack/react-router';
 import { ArrowLeft, ArrowRight, Check, LoaderCircle, Save } from 'lucide-react';
 import { toast } from 'sonner';
@@ -6,7 +6,7 @@ import { Button, PublicHeader, FormField, Tag } from './common';
 import { useDemo } from './store';
 import { interviewSteps, makeProject } from '@/lib/autolaunch/domain';
 export function Onboarding({interviewId}:{interviewId?:string|undefined}) {
- const {state,setState}=useDemo();const target=state.projects.find(p=>p.id===interviewId);const [step,setStep]=useState(interviewId?0:state.draftStep);const [answers,setAnswers]=useState<Record<string,string>>(target?.answers??state.draft);const [busy,setBusy]=useState(false);const navigate=useNavigate();const current=interviewSteps[step]??interviewSteps[0];
+ const {state,setState,ready}=useDemo();const target=state.projects.find(p=>p.id===interviewId);const [step,setStep]=useState(interviewId?0:state.draftStep);const [answers,setAnswers]=useState<Record<string,string>>(target?.answers??state.draft);const [busy,setBusy]=useState(false);const navigate=useNavigate();const restored=useRef(false);useEffect(()=>{if(ready&&!restored.current){restored.current=true;setAnswers(target?.answers??state.draft);setStep(interviewId?0:state.draftStep);}},[ready,target,state.draft,state.draftStep,interviewId]);const current=interviewSteps[step]??interviewSteps[0];
  if(!current)return null;
  const save=()=>{if(target)setState(s=>({...s,projects:s.projects.map(p=>p.id===target.id?{...p,answers}:p)}));else setState(s=>({...s,draft:answers,draftStep:step}));toast.success('Progreso guardado en este dispositivo.');};
  function submit(e:FormEvent){e.preventDefault();if(!answers['name']?.trim()&&!target){toast.error('Escribe el nombre del proyecto.');return;}if(step<4){setStep(step+1);if(!target)setState(s=>({...s,draft:answers,draftStep:step+1}));return;}setBusy(true);setTimeout(()=>{const project=makeProject(target?.name??answers['name']??'Mi proyecto',answers,target?.id);setState(s=>({...s,projects:target?s.projects.map(p=>p.id===target.id?{...project,income:p.income,rate:p.rate,price:p.price}:p):[...s.projects,project],active:project.id,draft:{},draftStep:0,activities:[{text:'Blueprint generado a partir de tus respuestas (plantilla local)',simulated:true,time:'Ahora',project:project.id},...s.activities]}));toast.success('Tu Blueprint está listo. Las hipótesis siguen pendientes de validar.');navigate({to:'/blueprint'});},1200);}

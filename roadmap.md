@@ -1,8 +1,8 @@
 # Autolaunch
-- [ ] Identidad y landing pública
-- [ ] Onboarding, dashboard y entrevista Ortoholistic
-- [ ] Blueprint editable, constructor y agentes simulados
-- [ ] Deployment con comprobaciones y biblioteca de Kits
-- [ ] Centro de control con aprobaciones
-- [ ] Analítica, registros editables y persistencia local
-- [ ] Pruebas de reglas económicas y comprobación de navegación
+- [x] Identidad y landing pública
+- [x] Onboarding, dashboard y entrevista Ortoholistic
+- [x] Blueprint editable, constructor y agentes simulados
+- [x] Deployment con comprobaciones y biblioteca de Kits
+- [x] Centro de control con aprobaciones
+- [x] Analítica, registros editables y persistencia local
+- [x] Pruebas de reglas económicas y comprobación de navegación
