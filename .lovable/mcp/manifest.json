@@ -1,0 +1,129 @@
+{
+  "version": 1,
+  "sdk_version": "3.0.5",
+  "path": "/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "idea-to-launch",
+      "version": "0.1.0",
+      "title": "Idea To Launch"
+    },
+    "tools": [
+      {
+        "name": "list_agents",
+        "title": "Listar agentes",
+        "description": "Lista los seis agentes especialistas de Autolaunch con su objetivo y nivel de autonomía.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {},
+          "additionalProperties": false
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_kits",
+        "title": "Listar Kits",
+        "description": "Lista los Kits de demostración (ficticios, no validados en proyectos reales).",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {},
+          "additionalProperties": false
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_deployment_checklist",
+        "title": "Checklist de Deployment",
+        "description": "Devuelve las tareas del Deployment por fase con responsable, coste, horas, dependencia y criterio de aceptación.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {},
+          "additionalProperties": false
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_interview_questions",
+        "title": "Preguntas de la entrevista",
+        "description": "Devuelve las preguntas de los cinco pasos del onboarding para definir un negocio.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {},
+          "additionalProperties": false
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "calculate_project_costs",
+        "title": "Calcular costes",
+        "description": "Calcula coste laboral (horas × tarifa), coste económico (caja + laboral) y margen (ingresos − costes).",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "type": "object",
+          "properties": {
+            "hours": {
+              "type": "number",
+              "minimum": 0,
+              "description": "Horas invertidas."
+            },
+            "rate": {
+              "type": "number",
+              "minimum": 0,
+              "description": "Tarifa interna por hora en euros."
+            },
+            "cash": {
+              "type": "number",
+              "minimum": 0,
+              "description": "Pagos directos atribuibles en euros."
+            },
+            "income": {
+              "type": "number",
+              "minimum": 0,
+              "description": "Ingresos cobrados en euros."
+            }
+          },
+          "required": [
+            "hours",
+            "rate",
+            "cash",
+            "income"
+          ],
+          "additionalProperties": false
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}

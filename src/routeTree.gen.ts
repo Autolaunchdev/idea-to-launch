@@ -21,9 +21,11 @@ import { Route as ControlRouteImport } from './routes/control'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as DeploymentRouteImport } from './routes/deployment'
 import { Route as KitsRouteImport } from './routes/kits'
+import { Route as McpRouteImport } from './routes/mcp'
 import { Route as MiNegocioRouteImport } from './routes/mi-negocio'
 import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as ProductoRouteImport } from './routes/producto'
+import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -85,6 +87,11 @@ const KitsRoute = KitsRouteImport.update({
   path: '/kits',
   getParentRoute: () => rootRouteImport,
 } as any)
+const McpRoute = McpRouteImport.update({
+  id: '/mcp',
+  path: '/mcp',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MiNegocioRoute = MiNegocioRouteImport.update({
   id: '/mi-negocio',
   path: '/mi-negocio',
@@ -100,6 +107,12 @@ const ProductoRoute = ProductoRouteImport.update({
   path: '/producto',
   getParentRoute: () => rootRouteImport,
 } as any)
+const Char91DotwellKnownChar93OauthProtectedResourceRoute =
+  Char91DotwellKnownChar93OauthProtectedResourceRouteImport.update({
+    id: '/.well-known/oauth-protected-resource',
+    path: '/.well-known/oauth-protected-resource',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -114,9 +127,11 @@ export interface FileRoutesByFullPath {
   '/dashboard': typeof DashboardRoute
   '/deployment': typeof DeploymentRoute
   '/kits': typeof KitsRoute
+  '/mcp': typeof McpRoute
   '/mi-negocio': typeof MiNegocioRoute
   '/onboarding': typeof OnboardingRoute
   '/producto': typeof ProductoRoute
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -131,9 +146,11 @@ export interface FileRoutesByTo {
   '/dashboard': typeof DashboardRoute
   '/deployment': typeof DeploymentRoute
   '/kits': typeof KitsRoute
+  '/mcp': typeof McpRoute
   '/mi-negocio': typeof MiNegocioRoute
   '/onboarding': typeof OnboardingRoute
   '/producto': typeof ProductoRoute
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -149,9 +166,11 @@ export interface FileRoutesById {
   '/dashboard': typeof DashboardRoute
   '/deployment': typeof DeploymentRoute
   '/kits': typeof KitsRoute
+  '/mcp': typeof McpRoute
   '/mi-negocio': typeof MiNegocioRoute
   '/onboarding': typeof OnboardingRoute
   '/producto': typeof ProductoRoute
+  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -168,9 +187,11 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/deployment'
     | '/kits'
+    | '/mcp'
     | '/mi-negocio'
     | '/onboarding'
     | '/producto'
+    | '/.well-known/oauth-protected-resource'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -185,9 +206,11 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/deployment'
     | '/kits'
+    | '/mcp'
     | '/mi-negocio'
     | '/onboarding'
     | '/producto'
+    | '/.well-known/oauth-protected-resource'
   id:
     | '__root__'
     | '/'
@@ -202,9 +225,11 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/deployment'
     | '/kits'
+    | '/mcp'
     | '/mi-negocio'
     | '/onboarding'
     | '/producto'
+    | '/.well-known/oauth-protected-resource'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -220,9 +245,11 @@ export interface RootRouteChildren {
   DashboardRoute: typeof DashboardRoute
   DeploymentRoute: typeof DeploymentRoute
   KitsRoute: typeof KitsRoute
+  McpRoute: typeof McpRoute
   MiNegocioRoute: typeof MiNegocioRoute
   OnboardingRoute: typeof OnboardingRoute
   ProductoRoute: typeof ProductoRoute
+  Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -311,6 +338,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof KitsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/mcp': {
+      id: '/mcp'
+      path: '/mcp'
+      fullPath: '/mcp'
+      preLoaderRoute: typeof McpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/mi-negocio': {
       id: '/mi-negocio'
       path: '/mi-negocio'
@@ -332,6 +366,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/.well-known/oauth-protected-resource': {
+      id: '/.well-known/oauth-protected-resource'
+      path: '/.well-known/oauth-protected-resource'
+      fullPath: '/.well-known/oauth-protected-resource'
+      preLoaderRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -348,9 +389,12 @@ const rootRouteChildren: RootRouteChildren = {
   DashboardRoute: DashboardRoute,
   DeploymentRoute: DeploymentRoute,
   KitsRoute: KitsRoute,
+  McpRoute: McpRoute,
   MiNegocioRoute: MiNegocioRoute,
   OnboardingRoute: OnboardingRoute,
   ProductoRoute: ProductoRoute,
+  Char91DotwellKnownChar93OauthProtectedResourceRoute:
+    Char91DotwellKnownChar93OauthProtectedResourceRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
